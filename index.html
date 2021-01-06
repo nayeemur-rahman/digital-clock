@@ -138,10 +138,10 @@
             }
             update(){
                 var date = new Date();
-                var h = date.getHours()%12;
+                var h = date.getHours()%12 || 12;
                 var m = date.getMinutes();
                 var s = date.getSeconds();
-                const days = ["Sunday", "Monday", "Tuesday", "Wednessday", "Thursday", "Friday", "Saturday"]
+                const days = ["Sunday", "Monday", "Tuesday", "Wednessday", "Thursday", "Friday", "Saturday"];
                 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
                 this.hour.innerText = h > 9 ? h + "" : "0" + h;
                 this.minute.innerText = m > 9 ? m + "" : "0" + m;
@@ -149,14 +149,14 @@
                 this.ampm.innerText = date.getHours() < 12 ? "AM" : "PM";
                 this.day.innerText = days[date.getDay()]+",";
                 this.date.innerText = date.getDate() + ",";
-                this.month.innerText = months[date.getMonth()]
+                this.month.innerText = months[date.getMonth()];
                 this.year.innerText = date.getFullYear() + "";
             }
         }
         let clock = new Clock(document.getElementById("clock"));
         window.setInterval(
             function(){
-                clock.update()
+                clock.update();
             },
             500
         );
